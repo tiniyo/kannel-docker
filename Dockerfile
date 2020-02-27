@@ -11,7 +11,7 @@ RUN apk add --no-cache ca-certificates bash subversion \
   libxml2 pcre musl hiredis openssl \
   libxml2-dev pcre-dev build-base libtool musl-dev bison \
   hiredis-dev openssl-dev \
-  && svn checkout -r 5186 https://svn.kannel.org/gateway/trunk \
+  && svn checkout -r 5285 https://svn.kannel.org/gateway/trunk \
   kannel-svn-trunk && cd /kannel-svn-trunk \
   && ln -sf /usr/include/poll.h /usr/include/sys/poll.h \
   && ln -s /usr/include/unistd.h /usr/include/sys/unistd.h \
