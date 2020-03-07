@@ -1,4 +1,4 @@
-FROM alpine:3.5
+FROM alpine:3.11
 
 ADD https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem.txt \
   /etc/ssl/certs/lets-encrypt-x3-cross-signed.pem
@@ -11,11 +11,10 @@ RUN apk add --no-cache ca-certificates bash subversion \
   libxml2 pcre musl hiredis openssl \
   libxml2-dev pcre-dev build-base libtool musl-dev bison \
   hiredis-dev openssl-dev \
-  && svn checkout -r 5285 https://svn.kannel.org/gateway/trunk \
+  && svn checkout https://svn.kannel.org/gateway/tags/version_1_4_5 \
   kannel-svn-trunk && cd /kannel-svn-trunk \
   && ln -sf /usr/include/poll.h /usr/include/sys/poll.h \
   && ln -s /usr/include/unistd.h /usr/include/sys/unistd.h \
-  && ln -s /usr/share/libtool/build-aux/ltmain.sh /kannel-svn-trunk/ltmain.sh \
   && ./configure \
   --with-redis --enable-docs=no --enable-start-stop-daemon=no \
   --without-sdb --without-oracle --without-sqlite2 \
